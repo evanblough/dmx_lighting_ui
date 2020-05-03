@@ -23,7 +23,6 @@ class LightMenu : public QWidget
 public:
     explicit LightMenu(QWidget *parent = nullptr);
     ~LightMenu();
-    void addChannelSlider(short index, const char* name);
     void showFrame(LightMenuFrame lframe);
     void clearLayout(QLayout *layout);
     void clearChannelDisplay();

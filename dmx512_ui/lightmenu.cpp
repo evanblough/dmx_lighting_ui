@@ -43,20 +43,12 @@ void LightMenu::clearLayout(QLayout *layout){
     }
 }
 
-
-void LightMenu::addChannelSlider(short index, const char *name)
-{
-    ChannelSlider *cs = new ChannelSlider;
-    cs->setInfo(index, name);
-    slider_layout->addWidget(cs);
-    ui->Channels->setLayout(slider_layout);
-}
-
 void LightMenu::showFrame(LightMenuFrame lframe)
 {
     for(short i = lframe.start; i < lframe.end; i++){
         ChannelSlider *cs = new ChannelSlider;
         cs->setInfo(i, channel_names[i]);
+        cs->setChannels(channel_vals);
         slider_layout->addWidget(cs);
     }
     ui->Channels->setLayout(slider_layout);
