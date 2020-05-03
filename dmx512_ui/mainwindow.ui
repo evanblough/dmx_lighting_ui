@@ -19,7 +19,7 @@
      <widget class="QComboBox" name="LightNames"/>
     </item>
     <item row="1" column="0">
-     <widget class="LightMenu" name="widget" native="true"/>
+     <widget class="LightMenu" name="lMenu" native="true"/>
     </item>
    </layout>
   </widget>

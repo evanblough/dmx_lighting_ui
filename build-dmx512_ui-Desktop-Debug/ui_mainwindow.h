@@ -29,7 +29,7 @@ public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QComboBox *LightNames;
-    LightMenu *widget;
+    LightMenu *lMenu;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -46,10 +46,10 @@ public:
 
         gridLayout->addWidget(LightNames, 0, 0, 1, 1);
 
-        widget = new LightMenu(centralwidget);
-        widget->setObjectName(QStringLiteral("widget"));
+        lMenu = new LightMenu(centralwidget);
+        lMenu->setObjectName(QStringLiteral("lMenu"));
 
-        gridLayout->addWidget(widget, 1, 0, 1, 1);
+        gridLayout->addWidget(lMenu, 1, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);

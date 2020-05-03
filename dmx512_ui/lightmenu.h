@@ -2,6 +2,7 @@
 #define LIGHTMENU_H
 
 #include <QWidget>
+#include <QHBoxLayout>
 
 namespace Ui {
 class LightMenu;
@@ -19,9 +20,11 @@ class LightMenu : public QWidget
 public:
     explicit LightMenu(QWidget *parent = nullptr);
     ~LightMenu();
+    void addChannelSlider(short index, const char* name);
 
 private:
     Ui::LightMenu *ui;
+    QHBoxLayout *slider_layout;
 };
 
 #endif // LIGHTMENU_H

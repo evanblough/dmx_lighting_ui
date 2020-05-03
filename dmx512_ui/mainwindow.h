@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "lightmenu.h"
 
 #define NUM_LIGHTS 2
 #define LIGHTNAME_LEN 10
