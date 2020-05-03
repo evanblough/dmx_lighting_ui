@@ -22,6 +22,13 @@
        <height>20</height>
       </size>
      </property>
+     <property name="font">
+      <font>
+       <family>Ubuntu</family>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
       <string>Current Color</string>
      </property>
@@ -41,6 +48,12 @@
        <height>20</height>
       </size>
      </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
       <string>Color Wheel</string>
      </property>
@@ -54,6 +67,12 @@
    </item>
    <item row="0" column="1">
     <widget class="QLabel" name="label_3">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
       <string>Channels</string>
      </property>

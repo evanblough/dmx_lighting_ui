@@ -17,6 +17,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QSlider>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,7 +27,9 @@ class Ui_ChannelSlider
 public:
     QGridLayout *gridLayout;
     QSlider *verticalSlider;
+    QLabel *label;
     QLabel *ChannelName;
+    QTextEdit *textEdit;
     QLabel *ChannelIndex;
 
     void setupUi(QWidget *ChannelSlider)
@@ -34,6 +37,7 @@ public:
         if (ChannelSlider->objectName().isEmpty())
             ChannelSlider->setObjectName(QStringLiteral("ChannelSlider"));
         ChannelSlider->resize(177, 315);
+        ChannelSlider->setMaximumSize(QSize(200, 16777215));
         gridLayout = new QGridLayout(ChannelSlider);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         verticalSlider = new QSlider(ChannelSlider);
@@ -43,25 +47,46 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(verticalSlider->sizePolicy().hasHeightForWidth());
         verticalSlider->setSizePolicy(sizePolicy);
+        verticalSlider->setMaximumSize(QSize(200, 16777215));
         verticalSlider->setOrientation(Qt::Vertical);
 
-        gridLayout->addWidget(verticalSlider, 1, 0, 1, 1);
+        gridLayout->addWidget(verticalSlider, 2, 0, 1, 1);
 
-        ChannelName = new QLabel(ChannelSlider);
-        ChannelName->setObjectName(QStringLiteral("ChannelName"));
+        label = new QLabel(ChannelSlider);
+        label->setObjectName(QStringLiteral("label"));
         QFont font;
         font.setBold(true);
         font.setWeight(75);
+        label->setFont(font);
+        label->setFrameShape(QFrame::Box);
+        label->setAlignment(Qt::AlignCenter);
+
+        gridLayout->addWidget(label, 3, 0, 1, 1);
+
+        ChannelName = new QLabel(ChannelSlider);
+        ChannelName->setObjectName(QStringLiteral("ChannelName"));
         ChannelName->setFont(font);
+        ChannelName->setFrameShape(QFrame::Box);
         ChannelName->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(ChannelName, 0, 0, 1, 1);
 
+        textEdit = new QTextEdit(ChannelSlider);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        sizePolicy.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
+        textEdit->setSizePolicy(sizePolicy);
+        textEdit->setMaximumSize(QSize(16777215, 30));
+        textEdit->setFrameShape(QFrame::Box);
+        textEdit->setFrameShadow(QFrame::Plain);
+
+        gridLayout->addWidget(textEdit, 4, 0, 1, 1);
+
         ChannelIndex = new QLabel(ChannelSlider);
         ChannelIndex->setObjectName(QStringLiteral("ChannelIndex"));
+        ChannelIndex->setFrameShape(QFrame::Box);
         ChannelIndex->setAlignment(Qt::AlignCenter);
 
-        gridLayout->addWidget(ChannelIndex, 2, 0, 1, 1);
+        gridLayout->addWidget(ChannelIndex, 1, 0, 1, 1);
 
 
         retranslateUi(ChannelSlider);
@@ -72,6 +97,7 @@ public:
     void retranslateUi(QWidget *ChannelSlider)
     {
         ChannelSlider->setWindowTitle(QApplication::translate("ChannelSlider", "Form", Q_NULLPTR));
+        label->setText(QApplication::translate("ChannelSlider", "Value", Q_NULLPTR));
         ChannelName->setText(QApplication::translate("ChannelSlider", "TextLabel", Q_NULLPTR));
         ChannelIndex->setText(QApplication::translate("ChannelSlider", "TextLabel", Q_NULLPTR));
     } // retranslateUi

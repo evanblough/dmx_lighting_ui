@@ -41,6 +41,11 @@ public:
         label = new QLabel(LightMenu);
         label->setObjectName(QStringLiteral("label"));
         label->setMaximumSize(QSize(16777215, 20));
+        QFont font;
+        font.setFamily(QStringLiteral("Ubuntu"));
+        font.setBold(true);
+        font.setWeight(75);
+        label->setFont(font);
         label->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(label, 0, 0, 1, 1);
@@ -53,6 +58,10 @@ public:
         label_2 = new QLabel(LightMenu);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setMaximumSize(QSize(16777215, 20));
+        QFont font1;
+        font1.setBold(true);
+        font1.setWeight(75);
+        label_2->setFont(font1);
         label_2->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(label_2, 2, 0, 1, 1);
@@ -64,6 +73,7 @@ public:
 
         label_3 = new QLabel(LightMenu);
         label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setFont(font1);
         label_3->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(label_3, 0, 1, 1, 1);

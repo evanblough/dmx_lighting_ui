@@ -18,6 +18,7 @@ LightMenu::~LightMenu()
 void LightMenu::addChannelSlider(short index, const char *name)
 {
     ChannelSlider *cs = new ChannelSlider();
+    cs->setInfo(index, name);
     slider_layout->addWidget(cs);
     ui->Channels->setLayout(slider_layout);
 }
