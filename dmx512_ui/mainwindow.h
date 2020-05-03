@@ -18,8 +18,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+public slots:
+    void changed_light(int index);
 
 private:
+    LightMenuFrame lframes[NUM_LIGHTS] = {{0, 4}, {4, 8}};
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

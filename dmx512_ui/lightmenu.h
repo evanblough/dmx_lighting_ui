@@ -25,6 +25,8 @@ public:
     ~LightMenu();
     void addChannelSlider(short index, const char* name);
     void showFrame(LightMenuFrame lframe);
+    void clearLayout(QLayout *layout);
+    void clearChannelDisplay();
 
 private:
     Ui::LightMenu *ui;

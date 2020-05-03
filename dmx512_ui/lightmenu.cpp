@@ -8,10 +8,12 @@ LightMenu::LightMenu(QWidget *parent) :
 {
     ui->setupUi(this);
     slider_layout = new QHBoxLayout;
+    //Init channels and channel names
     for(int i = 0; i < NUM_CHANNELS; i++){
         channel_vals[i] = 0;
         channel_names[i][0] = '\0';
     }
+    //Load Names
     strcpy(channel_names[0], "DIM/STROBE");
     strcpy(channel_names[1], "R");
     strcpy(channel_names[2], "G");
@@ -23,6 +25,23 @@ LightMenu::~LightMenu()
     delete ui;
 }
 
+void LightMenu::clearChannelDisplay(){
+    clearLayout(slider_layout);
+}
+
+void LightMenu::clearLayout(QLayout *layout){
+    QLayoutItem *item;
+    while((item = layout->takeAt(0))) {
+        if (item->layout()) {
+            clearLayout(item->layout());
+            delete item->layout();
+        }
+        if (item->widget()) {
+            delete item->widget();
+        }
+        delete item;
+    }
+}
 
 
 void LightMenu::addChannelSlider(short index, const char *name)
