@@ -7,6 +7,11 @@ namespace Ui {
 class LightMenu;
 }
 
+struct LightMenuFrame{
+    short start;
+    short end;
+};
+
 class LightMenu : public QWidget
 {
     Q_OBJECT

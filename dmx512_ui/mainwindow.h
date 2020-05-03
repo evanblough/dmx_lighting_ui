@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+#define NUM_LIGHTS 2
+#define LIGHTNAME_LEN 10
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE

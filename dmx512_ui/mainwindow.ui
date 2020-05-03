@@ -16,12 +16,23 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QComboBox" name="comboBox"/>
+     <widget class="QComboBox" name="LightNames"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="LightMenu" name="widget" native="true"/>
     </item>
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LightMenu</class>
+   <extends>QWidget</extends>
+   <header>lightmenu.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
