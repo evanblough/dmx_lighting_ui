@@ -33,7 +33,7 @@ public:
     {
         if (ChannelSlider->objectName().isEmpty())
             ChannelSlider->setObjectName(QStringLiteral("ChannelSlider"));
-        ChannelSlider->resize(148, 308);
+        ChannelSlider->resize(177, 315);
         gridLayout = new QGridLayout(ChannelSlider);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         verticalSlider = new QSlider(ChannelSlider);

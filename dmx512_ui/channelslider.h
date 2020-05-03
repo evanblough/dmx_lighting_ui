@@ -14,7 +14,6 @@ class ChannelSlider : public QWidget
 public:
     explicit ChannelSlider(QWidget *parent = nullptr);
     ~ChannelSlider();
-    void setChannel(short index, QString name);
 
 private:
     Ui::ChannelSlider *ui;

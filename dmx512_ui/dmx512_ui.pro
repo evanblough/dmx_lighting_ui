@@ -16,15 +16,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    channelslider.cpp \
     lightmenu.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    channelslider.h \
     lightmenu.h \
     mainwindow.h
 
 FORMS += \
+    channelslider.ui \
     lightmenu.ui \
     mainwindow.ui
 
