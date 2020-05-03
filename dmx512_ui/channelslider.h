@@ -19,6 +19,7 @@ public:
 
 public slots:
     void display_value(int channel_value);
+    void update_slider();
 signals:
     void channel_changed(short index, unsigned char value);
 private:

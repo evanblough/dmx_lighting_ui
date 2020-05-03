@@ -8,6 +8,7 @@ ChannelSlider::ChannelSlider(QWidget *parent) :
     ui->setupUi(this);
     //Setup Signal / Slot
     QObject::connect(ui->verticalSlider, &QAbstractSlider::valueChanged, this, &ChannelSlider::display_value);
+    QObject::connect(ui->ChannelValue, &QTextEdit::textChanged, this, &ChannelSlider::update_slider);
 }
 
 ChannelSlider::~ChannelSlider()
@@ -29,6 +30,13 @@ void ChannelSlider::display_value(int channel_value)
     channels[channel_index] = (unsigned char) channel_value;
     //printf("Value of Channel %d is %d\n", channel_index, channels[channel_index]);
     emit channel_changed(channel_index, channel_value);
+}
+
+void ChannelSlider::update_slider()
+{
+    QString val_str = ui->ChannelValue->toPlainText();
+    unsigned char val = val_str.toInt();
+    ui->verticalSlider->setValue(val);
 }
 
 void ChannelSlider::setChannels(unsigned char *value)
