@@ -29,7 +29,7 @@ public:
     QSlider *verticalSlider;
     QLabel *label;
     QLabel *ChannelName;
-    QTextEdit *textEdit;
+    QTextEdit *ChannelValue;
     QLabel *ChannelIndex;
 
     void setupUi(QWidget *ChannelSlider)
@@ -48,6 +48,7 @@ public:
         sizePolicy.setHeightForWidth(verticalSlider->sizePolicy().hasHeightForWidth());
         verticalSlider->setSizePolicy(sizePolicy);
         verticalSlider->setMaximumSize(QSize(200, 16777215));
+        verticalSlider->setMaximum(255);
         verticalSlider->setOrientation(Qt::Vertical);
 
         gridLayout->addWidget(verticalSlider, 2, 0, 1, 1);
@@ -71,15 +72,15 @@ public:
 
         gridLayout->addWidget(ChannelName, 0, 0, 1, 1);
 
-        textEdit = new QTextEdit(ChannelSlider);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        sizePolicy.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
-        textEdit->setSizePolicy(sizePolicy);
-        textEdit->setMaximumSize(QSize(16777215, 30));
-        textEdit->setFrameShape(QFrame::Box);
-        textEdit->setFrameShadow(QFrame::Plain);
+        ChannelValue = new QTextEdit(ChannelSlider);
+        ChannelValue->setObjectName(QStringLiteral("ChannelValue"));
+        sizePolicy.setHeightForWidth(ChannelValue->sizePolicy().hasHeightForWidth());
+        ChannelValue->setSizePolicy(sizePolicy);
+        ChannelValue->setMaximumSize(QSize(16777215, 30));
+        ChannelValue->setFrameShape(QFrame::Box);
+        ChannelValue->setFrameShadow(QFrame::Plain);
 
-        gridLayout->addWidget(textEdit, 4, 0, 1, 1);
+        gridLayout->addWidget(ChannelValue, 4, 0, 1, 1);
 
         ChannelIndex = new QLabel(ChannelSlider);
         ChannelIndex->setObjectName(QStringLiteral("ChannelIndex"));

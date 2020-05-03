@@ -32,7 +32,7 @@ private:
     Ui::LightMenu *ui;
     QHBoxLayout *slider_layout;
     char channel_names[NUM_CHANNELS][CHANNEL_NAMELEN];
-    char channel_vals[NUM_CHANNELS];
+    unsigned char channel_vals[NUM_CHANNELS];
 };
 
 #endif // LIGHTMENU_H
