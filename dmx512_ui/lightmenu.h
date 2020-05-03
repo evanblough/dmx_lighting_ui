@@ -4,6 +4,9 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
+#define NUM_CHANNELS 512
+#define CHANNEL_NAMELEN 12
+
 namespace Ui {
 class LightMenu;
 }
@@ -21,10 +24,13 @@ public:
     explicit LightMenu(QWidget *parent = nullptr);
     ~LightMenu();
     void addChannelSlider(short index, const char* name);
+    void showFrame(LightMenuFrame lframe);
 
 private:
     Ui::LightMenu *ui;
     QHBoxLayout *slider_layout;
+    char channel_names[NUM_CHANNELS][CHANNEL_NAMELEN];
+    char channel_vals[NUM_CHANNELS];
 };
 
 #endif // LIGHTMENU_H

@@ -10,7 +10,10 @@ MainWindow::MainWindow(QWidget *parent)
     for(int i = 0;i < NUM_LIGHTS; i++){
         ui->LightNames->addItem(names[i], 0);
     }
-    ui->lMenu->addChannelSlider(0, "hello");
+    LightMenuFrame lmenu;
+    lmenu.start = 0;
+    lmenu.end = 4;
+    ui->lMenu->showFrame(lmenu);
 }
 
 MainWindow::~MainWindow()
