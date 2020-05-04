@@ -22,7 +22,7 @@ public slots:
     void changed_light(int index);
 
 private:
-    LightMenuFrame lframes[NUM_LIGHTS] = {{0, 4}, {4, 15}};
+    LightMenuFrame lframes[NUM_LIGHTS] = {{0, 4}, {4, 14}};
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
