@@ -1,5 +1,6 @@
 #include "channelslider.h"
 #include "ui_channelslider.h"
+#include <QTextCursor>
 
 ChannelSlider::ChannelSlider(QWidget *parent) :
     QWidget(parent),
@@ -37,6 +38,7 @@ void ChannelSlider::update_slider()
     QString val_str = ui->ChannelValue->toPlainText();
     unsigned char val = val_str.toInt();
     ui->verticalSlider->setValue(val);
+    ui->ChannelValue->moveCursor(QTextCursor::End, QTextCursor::MoveAnchor);
 }
 
 void ChannelSlider::setChannels(unsigned char *value)
