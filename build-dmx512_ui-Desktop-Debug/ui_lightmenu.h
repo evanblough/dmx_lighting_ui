@@ -17,6 +17,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
+#include "colordisplay.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -29,7 +30,7 @@ public:
     QLabel *label_2;
     QWidget *Channels;
     QLabel *label_3;
-    QWidget *CurrColor;
+    ColorDisplay *CurrColor;
 
     void setupUi(QWidget *LightMenu)
     {
@@ -78,7 +79,7 @@ public:
 
         gridLayout->addWidget(label_3, 0, 1, 1, 1);
 
-        CurrColor = new QWidget(LightMenu);
+        CurrColor = new ColorDisplay(LightMenu);
         CurrColor->setObjectName(QStringLiteral("CurrColor"));
         CurrColor->setMaximumSize(QSize(300, 16777215));
 

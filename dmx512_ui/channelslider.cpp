@@ -29,7 +29,6 @@ void ChannelSlider::display_value(int channel_value)
     const QString val = QString::fromStdString(std::to_string(channel_value));
     ui->ChannelValue->setText(val);
     channels[channel_index] = (unsigned char) channel_value;
-    //printf("Value of Channel %d is %d\n", channel_index, channels[channel_index]);
     emit channel_changed(channel_index, channel_value);
 }
 
@@ -38,6 +37,7 @@ void ChannelSlider::update_slider()
     QString val_str = ui->ChannelValue->toPlainText();
     unsigned char val = val_str.toInt();
     ui->verticalSlider->setValue(val);
+    //Move cursor to the end why this wasn't the default idkg
     ui->ChannelValue->moveCursor(QTextCursor::End, QTextCursor::MoveAnchor);
 }
 

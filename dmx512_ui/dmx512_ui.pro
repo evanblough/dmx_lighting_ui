@@ -17,17 +17,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     channelslider.cpp \
+    colordisplay.cpp \
     lightmenu.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     channelslider.h \
+    colordisplay.h \
     lightmenu.h \
     mainwindow.h
 
 FORMS += \
     channelslider.ui \
+    colordisplay.ui \
     lightmenu.ui \
     mainwindow.ui
 

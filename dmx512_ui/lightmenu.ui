@@ -82,7 +82,7 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QWidget" name="CurrColor" native="true">
+    <widget class="ColorDisplay" name="CurrColor" native="true">
      <property name="maximumSize">
       <size>
        <width>300</width>
@@ -93,6 +93,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ColorDisplay</class>
+   <extends>QWidget</extends>
+   <header>colordisplay.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
