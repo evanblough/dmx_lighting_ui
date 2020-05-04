@@ -15,6 +15,7 @@ ColorDisplay::ColorDisplay(QWidget *parent) :
 void ColorDisplay::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
+    painter.eraseRect(this->rect());
     painter.setRenderHint(QPainter::Antialiasing);
     QPen pen(*color);
     pen.setWidth(2);
@@ -27,4 +28,13 @@ void ColorDisplay::paintEvent(QPaintEvent *event)
 ColorDisplay::~ColorDisplay()
 {
     delete ui;
+}
+
+void ColorDisplay::update_color(unsigned char r, unsigned char g, unsigned char b)
+{
+    color->setRed(r);
+    color->setGreen(g);
+    color->setBlue(b);
+    this->show();
+    this->repaint();
 }

@@ -26,6 +26,8 @@ public:
     void showFrame(LightMenuFrame lframe);
     void clearLayout(QLayout *layout);
     void clearChannelDisplay();
+public slots:
+    void channel_updated(short index, unsigned char value);
 
 private:
     Ui::LightMenu *ui;

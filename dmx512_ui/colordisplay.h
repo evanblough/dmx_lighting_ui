@@ -16,6 +16,8 @@ public:
     explicit ColorDisplay(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event);
     ~ColorDisplay();
+public slots:
+    void update_color(unsigned char r, unsigned char g, unsigned char b);
 
 private:
     Ui::ColorDisplay *ui;
