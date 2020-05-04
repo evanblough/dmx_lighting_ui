@@ -49,6 +49,7 @@ public:
         sizePolicy.setHeightForWidth(verticalSlider->sizePolicy().hasHeightForWidth());
         verticalSlider->setSizePolicy(sizePolicy);
         verticalSlider->setMaximumSize(QSize(200, 16777215));
+        verticalSlider->setStyleSheet(QStringLiteral(""));
         verticalSlider->setMaximum(255);
         verticalSlider->setOrientation(Qt::Vertical);
 

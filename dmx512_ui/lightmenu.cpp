@@ -1,6 +1,7 @@
 #include "lightmenu.h"
 #include "ui_lightmenu.h"
 #include "channelslider.h"
+#include <iostream>
 
 #define RED_CHANNEL 1
 #define GREEN_CHANNEL 2
@@ -18,7 +19,6 @@ LightMenu::LightMenu(QWidget *parent) :
     for(int i = 0; i < NUM_CHANNELS; i++){
         channel_vals[i] = 0;
         channel_names[i][0] = '\0';
-        channels_cache[i] = -1;
     }
     //Load Names
     strcpy(channel_names[0], "DIM/STROBE");
@@ -39,6 +39,7 @@ LightMenu::LightMenu(QWidget *parent) :
     //Signals / Slots
     QObject::connect(ui->Back, &QPushButton::clicked, this, &LightMenu::decrement_offset);
     QObject::connect(ui->Forward, &QPushButton::clicked, this, &LightMenu::increment_offset);
+    QObject::connect(ui->Send, &QPushButton::clicked, this, &LightMenu::send);
     curr_lframe.start = 0;
     curr_lframe.end = 0;
 }
@@ -63,8 +64,17 @@ void LightMenu::decrement_offset(bool checked){
     clearChannelDisplay();
     showFrame(curr_lframe);
 }
+
+void LightMenu::send(bool checked)
+{
+    for(auto i = channel_cache.begin(); i != channel_cache.end(); i++){
+        std::cout << "Update Channel " << *i << " With Value " << std::to_string(channel_vals[*i]) << std::endl;
+    }
+    channel_cache.clear();
+}
 void LightMenu::channel_updated(short index, unsigned char value)
 {
+    if(!channel_cache.contains(index)) channel_cache.append(index);
        if(index == RED_CHANNEL || index == BLUE_CHANNEL || index == GREEN_CHANNEL){
            unsigned char r = channel_vals[RED_CHANNEL];
            unsigned char b = channel_vals[BLUE_CHANNEL];

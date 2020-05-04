@@ -30,13 +30,14 @@ public slots:
     void channel_updated(short index, unsigned char value);
     void increment_offset(bool checked);
     void decrement_offset(bool checked);
+    void send(bool checked);
 
 private:
     Ui::LightMenu *ui;
     QHBoxLayout *slider_layout;
     char channel_names[NUM_CHANNELS][CHANNEL_NAMELEN];
     unsigned char channel_vals[NUM_CHANNELS];
-    short channels_cache[NUM_CHANNELS];
+    QList<short> channel_cache;
     short offset;
     LightMenuFrame curr_lframe;
 };
