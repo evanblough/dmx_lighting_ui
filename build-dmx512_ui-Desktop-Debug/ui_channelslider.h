@@ -40,6 +40,7 @@ public:
         ChannelSlider->setMaximumSize(QSize(150, 16777215));
         gridLayout = new QGridLayout(ChannelSlider);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(-1, 0, -1, 0);
         verticalSlider = new QSlider(ChannelSlider);
         verticalSlider->setObjectName(QStringLiteral("verticalSlider"));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

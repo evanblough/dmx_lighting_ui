@@ -35,6 +35,5 @@ void ColorDisplay::update_color(unsigned char r, unsigned char g, unsigned char 
     color->setRed(r);
     color->setGreen(g);
     color->setBlue(b);
-    this->show();
     this->repaint();
 }

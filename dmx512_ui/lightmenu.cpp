@@ -5,17 +5,20 @@
 #define RED_CHANNEL 1
 #define GREEN_CHANNEL 2
 #define BLUE_CHANNEL 3
+#define MAX_NUM_SLIDERS 4
 
 LightMenu::LightMenu(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::LightMenu)
 {
     ui->setupUi(this);
+    offset = 0;
     slider_layout = new QHBoxLayout;
     //Init channels and channel names
     for(int i = 0; i < NUM_CHANNELS; i++){
         channel_vals[i] = 0;
         channel_names[i][0] = '\0';
+        channels_cache[i] = -1;
     }
     //Load Names
     strcpy(channel_names[0], "DIM/STROBE");
@@ -27,13 +30,17 @@ LightMenu::LightMenu(QWidget *parent) :
     strcpy(channel_names[5], "TILT");
     strcpy(channel_names[6], "COLORS");
     strcpy(channel_names[7], "GOBOS");
-    strcpy(channel_names[8], "GOBO INDEX ROT");
-    strcpy(channel_names[9], "ROTATING PRISM");
-    strcpy(channel_names[10], "GOBO INDEX_ROT");
-    strcpy(channel_names[11], "SHUTTER STROBE");
-    strcpy(channel_names[12], "DIMMER");
-    strcpy(channel_names[13], "MVMT SPEED");
-    strcpy(channel_names[14], "RESETS");
+    strcpy(channel_names[8], "GOBO INDEX");
+    strcpy(channel_names[9], "PRISM");
+    strcpy(channel_names[10], "SHUTTER STROBE");
+    strcpy(channel_names[11], "DIMMER");
+    strcpy(channel_names[12], "MVMT SPEED");
+    strcpy(channel_names[13], "RESETS");
+    //Signals / Slots
+    QObject::connect(ui->Back, &QPushButton::clicked, this, &LightMenu::decrement_offset);
+    QObject::connect(ui->Forward, &QPushButton::clicked, this, &LightMenu::increment_offset);
+    curr_lframe.start = 0;
+    curr_lframe.end = 0;
 }
 
 LightMenu::~LightMenu()
@@ -45,6 +52,17 @@ void LightMenu::clearChannelDisplay(){
     clearLayout(slider_layout);
 }
 
+void LightMenu::increment_offset(bool checked){
+    offset++;
+    clearChannelDisplay();
+    showFrame(curr_lframe);
+}
+void LightMenu::decrement_offset(bool checked){
+    offset--;
+    if(offset < 0) offset = 0;
+    clearChannelDisplay();
+    showFrame(curr_lframe);
+}
 void LightMenu::channel_updated(short index, unsigned char value)
 {
        if(index == RED_CHANNEL || index == BLUE_CHANNEL || index == GREEN_CHANNEL){
@@ -71,7 +89,9 @@ void LightMenu::clearLayout(QLayout *layout){
 
 void LightMenu::showFrame(LightMenuFrame lframe)
 {
-    for(short i = lframe.start; i < lframe.end; i++){
+    curr_lframe = lframe;
+    short end = (lframe.end < lframe.start+offset*4+MAX_NUM_SLIDERS) ? lframe.end : lframe.start+offset*4+MAX_NUM_SLIDERS;
+    for(short i = lframe.start+offset*4; i < end; i++){
         ChannelSlider *cs = new ChannelSlider;
         cs->setInfo(i, channel_names[i]);
         cs->setChannels(channel_vals);
