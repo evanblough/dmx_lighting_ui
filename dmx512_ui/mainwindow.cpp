@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lMenu->showFrame(lframes[0]);
     //Map Signals and Slots
     QObject::connect(ui->LightNames, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &MainWindow::changed_light);
+   ui->lMenu->remote_conn = &remote_sock;
 }
 
 MainWindow::~MainWindow()

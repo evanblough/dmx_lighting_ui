@@ -18,9 +18,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    int remote_sock;
 public slots:
     void changed_light(int index);
-
 private:
     LightMenuFrame lframes[NUM_LIGHTS] = {{0, 4}, {4, 14}};
     Ui::MainWindow *ui;

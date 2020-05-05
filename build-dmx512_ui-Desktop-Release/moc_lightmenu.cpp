@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_LightMenu_t {
     QByteArrayData data[9];
-    char stringdata0[86];
+    char stringdata0[89];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,12 +39,12 @@ QT_MOC_LITERAL(4, 33, 5), // "value"
 QT_MOC_LITERAL(5, 39, 16), // "increment_offset"
 QT_MOC_LITERAL(6, 56, 7), // "checked"
 QT_MOC_LITERAL(7, 64, 16), // "decrement_offset"
-QT_MOC_LITERAL(8, 81, 4) // "send"
+QT_MOC_LITERAL(8, 81, 7) // "sendVal"
 
     },
     "LightMenu\0channel_updated\0\0index\0value\0"
     "increment_offset\0checked\0decrement_offset\0"
-    "send"
+    "sendVal"
 };
 #undef QT_MOC_LITERAL
 
@@ -85,7 +85,7 @@ void LightMenu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 0: _t->channel_updated((*reinterpret_cast< short(*)>(_a[1])),(*reinterpret_cast< unsigned char(*)>(_a[2]))); break;
         case 1: _t->increment_offset((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 2: _t->decrement_offset((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 3: _t->send((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 3: _t->sendVal((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     }

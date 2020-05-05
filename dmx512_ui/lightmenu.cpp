@@ -2,6 +2,13 @@
 #include "ui_lightmenu.h"
 #include "channelslider.h"
 #include <iostream>
+#include <unistd.h>
+#include <stdlib.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <string.h>
+
 
 #define RED_CHANNEL 1
 #define GREEN_CHANNEL 2
@@ -39,7 +46,7 @@ LightMenu::LightMenu(QWidget *parent) :
     //Signals / Slots
     QObject::connect(ui->Back, &QPushButton::clicked, this, &LightMenu::decrement_offset);
     QObject::connect(ui->Forward, &QPushButton::clicked, this, &LightMenu::increment_offset);
-    QObject::connect(ui->Send, &QPushButton::clicked, this, &LightMenu::send);
+    QObject::connect(ui->Send, &QPushButton::clicked, this, &LightMenu::sendVal);
     curr_lframe.start = 0;
     curr_lframe.end = 0;
 }
@@ -65,10 +72,16 @@ void LightMenu::decrement_offset(bool checked){
     showFrame(curr_lframe);
 }
 
-void LightMenu::send(bool checked)
+void LightMenu::sendVal(bool checked)
 {
+    char buffer[1024];
     for(auto i = channel_cache.begin(); i != channel_cache.end(); i++){
-        std::cout << "Update Channel " << *i << " With Value " << std::to_string(channel_vals[*i]) << std::endl;
+        sprintf(buffer, "Update_Channel_%d_With_Value_%u", *i, channel_vals[*i]);
+        send(*remote_conn, buffer, strlen(buffer), 0);
+        for(int j = 0; j < 1024; j++){
+            buffer[j] = '\0';
+        }
+        usleep(1000);
     }
     channel_cache.clear();
 }

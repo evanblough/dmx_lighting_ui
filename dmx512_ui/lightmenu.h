@@ -26,11 +26,12 @@ public:
     void showFrame(LightMenuFrame lframe);
     void clearLayout(QLayout *layout);
     void clearChannelDisplay();
+    int* remote_conn;
 public slots:
     void channel_updated(short index, unsigned char value);
     void increment_offset(bool checked);
     void decrement_offset(bool checked);
-    void send(bool checked);
+    void sendVal(bool checked);
 
 private:
     Ui::LightMenu *ui;
